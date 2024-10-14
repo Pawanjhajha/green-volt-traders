@@ -1,14 +1,15 @@
-import mongoose, { Collection } from "mongoose";
+import mongoose from "mongoose";
+import bcrypt from 'bcrypt';
 
 const userSchema= new mongoose.Schema({
-    fristName:{
-        type:String,
-        required: [true,"The FirstName is required"],
-    },
-    lastName:{
-        type:String,
-        required:false
-    },
+    // fristName:{
+    //     type:String,
+    //     required: [true,"The FirstName is required"],
+    // },
+    // lastName:{
+    //     type:String,
+    //     required:false
+    // },
 
     email:{
         type:String,
@@ -24,18 +25,47 @@ const userSchema= new mongoose.Schema({
     },
     password:{
         type:String,
+    },
+
+    isOwner:{
+        type:Boolean,
+        default:false
+    },
+    isActive:{
+        type:Boolean,
+        default:true,
     }
 })
 
-export const UserModel=mongoose.model('users',userSchema);
-
-userSchema.pre("save", async function(next)=>{
-    if(!this.isModified('password')){
-         return next();
+userSchema.pre("save", async function(next) {
+    if (!this.isModified('password')) {
+        return next();
     }
-      const salt = await bcrypt.genSalt(10);
-      const hashedPassword = await bcrypt.hash(this.password, salt);
-      this.password = hashedPassword;
-      next();
+    try {
+        const salt = await bcrypt.genSalt(10);
+        const hashedPassword = await bcrypt.hash(this.password, salt);
+        this.password = hashedPassword;
+        next();
+    } catch (error) {
+        next(error);
+    }
 });
+
+userSchema.pre(['updateOne', 'findOneAndUpdate'], async function(next) {
+    const update = this.getUpdate(); 
+    console.log(update.$set.password,"pudate")
+    if (update.$set && update.$set.password) { 
+        try {
+            const salt = await bcrypt.genSalt(10);
+            const hashedPassword = await bcrypt.hash(update.$set.password, salt);
+            update.$set.password = hashedPassword; 
+        } catch (error) {
+            return next(error); 
+        }
+    }
+    next(); 
+});
+
+export const UserModel = mongoose.model('users', userSchema);
+
 
