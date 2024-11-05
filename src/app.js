@@ -2,6 +2,7 @@ import express from 'express';
 import dotEnv from 'dotenv';
 import connectDB from './config/db.js';
 import userRouter from './routers/userRouter.js';
+import globalErrorHandler from './middlewares/global-error-handler-middleware.js';
 
 dotEnv.config()
 const app=express();
@@ -18,6 +19,9 @@ app.get('/',(req,res)=>{
 const prefix=process.env.PREFIX;
 
 app.use(`${prefix}/users`,userRouter)
+
+//add the global error handler
+app.use(globalErrorHandler)
 app.listen(process.env.PORT,()=>{
     console.log(`server is runnin on port:${process.env.PORT}`)
 })
