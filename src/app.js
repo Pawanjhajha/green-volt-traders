@@ -2,7 +2,8 @@ import express from 'express';
 import dotEnv from 'dotenv';
 import connectDB from './config/db.js';
 import userRouter from './routers/userRouter.js';
-import globalErrorHandler from './middlewares/global-error-handler-middleware.js';
+import { globalErrorHandler } from './controllers/globalErrorController.js';
+
 
 dotEnv.config()
 const app=express();
