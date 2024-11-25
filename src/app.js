@@ -2,6 +2,7 @@ import express from 'express';
 import dotEnv from 'dotenv';
 import connectDB from './config/db.js';
 import userRouter from './routers/userRouter.js';
+import authRouter from './routers/authRouter.js'
 import { globalErrorHandler } from './controllers/globalErrorController.js';
 
 
@@ -18,8 +19,9 @@ app.get('/',(req,res)=>{
     res.send('"dfjkdsjfldsjflkdsf')
 })
 const prefix=process.env.PREFIX;
-
+console.log(prefix)
 app.use(`${prefix}/users`,userRouter)
+app.use(`${prefix}/auth`,authRouter)
 
 //add the global error handler
 app.use(globalErrorHandler)

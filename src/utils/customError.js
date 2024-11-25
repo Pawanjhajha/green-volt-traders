@@ -1,5 +1,5 @@
 //we call the cutome error class before the calling of globle error class
- export class CutomeError extends Error{
+ export class CustomError extends Error{
      statusCode;
     errors;
     constructor(status,errorMessage,errorsData={}){//errors={} means if user does not provide any value then {} assign to errors.

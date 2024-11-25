@@ -2,14 +2,14 @@ import mongoose from "mongoose";
 import bcrypt from 'bcrypt';
 
 const userSchema= new mongoose.Schema({
-    // fristName:{
-    //     type:String,
-    //     required: [true,"The FirstName is required"],
-    // },
-    // lastName:{
-    //     type:String,
-    //     required:false
-    // },
+    firstName:{
+        type:String,
+        required: [true,"The FirstName is required"],
+    },
+    lastName:{
+        type:String,
+        required:false
+    },
 
     email:{
         type:String,
@@ -25,6 +25,7 @@ const userSchema= new mongoose.Schema({
     },
     password:{
         type:String,
+        Select:false,
     },
 
     isOwner:{
@@ -35,7 +36,7 @@ const userSchema= new mongoose.Schema({
         type:Boolean,
         default:true,
     }
-})
+},{toJSON:{virtuals:true},toObject:{virtuals:true}})
 
 userSchema.pre("save", async function(next) {
     if (!this.isModified('password')) {
@@ -47,13 +48,12 @@ userSchema.pre("save", async function(next) {
         this.password = hashedPassword;
         next();
     } catch (error) {
-        next(error);
+        return next(error);
     }
 });
 
 userSchema.pre(['updateOne', 'findOneAndUpdate'], async function(next) {
     const update = this.getUpdate(); 
-    console.log(update.$set.password,"pudate")
     if (update.$set && update.$set.password) { 
         try {
             const salt = await bcrypt.genSalt(10);
@@ -65,7 +65,16 @@ userSchema.pre(['updateOne', 'findOneAndUpdate'], async function(next) {
     }
     next(); 
 });
+userSchema.virtual('name').get(function(){
+    if (this.firstName || this.lastName) {
+        return [this.firstName, this.lastName].join(' ');
+      }
+      return null;
+})
 
+userSchema.methods.comparePasswordInDB=async function(password,passwordDb){
+    return await bcrypt.compare(password,passwordDb)//the compare method runt the boolean value
+}
 export const UserModel = mongoose.model('users', userSchema);
 
 

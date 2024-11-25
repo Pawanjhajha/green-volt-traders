@@ -1,5 +1,7 @@
 import dotenv from 'dotenv';
-import connectDB from "./config/db.js";  // Import your database connection
+// import connectDB from "./config/db.js";  // Import your database connection
+import connectDB from "./config/db.js";
+
 import { OwnerSeeder } from "./seeder/owner.seeder.js";
 
 async function runSeeder() {
