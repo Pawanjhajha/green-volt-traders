@@ -3,6 +3,8 @@ import { UserModel } from "../models/user.model.js";
 // Default users to seed into the database
 const defaultUsers = [
   {
+    firstName:'pawan',
+    lastName:'kumar',
     email: 'pawan@gmail.com',
     password: 'password',
     isOwner: true,
