@@ -1,5 +1,24 @@
-# Ignore node_modules folder
-node_modules/
+# Node.js (backend server) dependencies
+/server/node_modules/
+/server/npm-debug.log
 
-# Ignore environment file
-.env
+# React (frontend) dependencies and build artifacts
+/frontend/node_modules/
+/frontend/build/
+
+# Environment files for both frontend and server
+/.env
+/frontend/.env
+/server/.env
+
+# Logs and temporary files
+*.log
+*.log.*
+
+# IDE/Editor specific files
+.vscode/
+.idea/
+
+# OS-specific files
+.DS_Store
+Thumbs.db
