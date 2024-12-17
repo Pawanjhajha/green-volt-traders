@@ -1,0 +1,69 @@
+.l-details{
+    text-align: justify; /* This is used for graph divide space equally */
+    font-family: gilroy;
+    font-weight: 900;
+    margin-top: 15px;
+    color: var(--text-color); /* Global text color */
+}
+.login-h1{
+    text-align: center;/* this will use the align text in center*/
+    font-weight: 900;/* meta dekahne ke liye*/
+    margin-top: 15px;
+}
+
+
+/* Apply a gradient background */
+.login-container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px;
+}
+
+/* Card specific styling */
+.login-card {
+    background-color: var(--card-bg-color);
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 10;
+    padding: 30px;
+    width: 100%;
+    max-width: 400px;
+}
+
+/* Headings and text */
+.l-details {
+    color: white;
+    text-align: left;
+}
+
+.login-h1 {
+    font-size: 2rem;
+    color: var(--primary-color); /* Matching color */
+    margin-bottom: 1rem;
+}
+
+/* Input and button styling */
+.form-control {
+    border-radius: 0.375rem;
+    margin-bottom: 1rem;
+}
+
+/* Button styling */
+button {
+    background-color: var(--primary-color) !important;
+    border-color: var(--primary-color) !important;
+    color: var(--white-color) !important;
+}
+
+button:hover {
+    background-color: var(--button-hover-color) !important;
+    border-color: var(--button-hover-color) !important;
+}
+
+/* Optionally adjust spacing between form fields */
+.form-group {
+    margin-bottom: 20px !important;
+}

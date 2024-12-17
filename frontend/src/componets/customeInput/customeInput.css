@@ -1,0 +1,5 @@
+.input-label {
+    display: block;     /* Ensures the label takes full width */
+    text-align: left;  /* Aligns the text to the right */
+}
+
