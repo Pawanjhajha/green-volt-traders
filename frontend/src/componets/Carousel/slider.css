@@ -1,0 +1,7 @@
+.slider-img {
+    width: 100%; /* Ensures the image takes the full width of the container */
+    height: 300px; /* Set a fixed height for consistency */
+    object-fit: cover; /* Ensures the image scales and crops to fit the dimensions . ye image ko fatane nhi deti */
+    border-radius: 15px; /* Adds  rounded corners */
+    display: block; /* Ensures proper alignment */
+}

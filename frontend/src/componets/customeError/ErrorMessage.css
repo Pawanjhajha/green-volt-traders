@@ -1,0 +1,19 @@
+
+  .error-container {
+    min-height: 18px; /* Ensures no extra space is taken when there's no error */
+    display: flex;
+    align-items: center;
+  }
+  
+  .error-text {
+    color: red;
+    margin-top: -18px; /* Remove extra margin */
+    /* font-size: small; */
+    font-family: var(--global-font-family);
+    font-size: var(--global-font-size);
+    visibility: hidden; /* Default state, so no space is occupied */
+  }
+  
+  .error-container.show-error .error-text {
+    visibility: visible; /* Only show when there's an error */
+  }
