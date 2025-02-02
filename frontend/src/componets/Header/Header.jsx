@@ -1,13 +1,13 @@
 import { Col, Container, Nav, Navbar, Row } from "react-bootstrap";
+import './Header.css';
 
 
 function Header() {
     return (
         <Container>
             <Row>
-
                 <Col>{/* navBar take full col 12  */}
-                    <Navbar  fixed='top' bg="primary" expand='md'>
+                    <Navbar  fixed='top' id='navBar' expand='md'>
                         {/* nav baar me ek or container hotata ha bootstrap me */}
                         <Container>
                             {/* nav bar logo */}
@@ -22,17 +22,16 @@ function Header() {
                             <Navbar.Collapse id='my-nav'>
                             {/* create naviagtion link  */}
                             <Nav className="me-auto fw-bold">
-                                <Nav.Link href="/"> Home</Nav.Link>
-                                <Nav.Link href="/"> About Us</Nav.Link>
-                                <Nav.Link href="/"> Testomonial</Nav.Link>
-                                <Nav.Link href="/"> product</Nav.Link>
-                                <Nav.Link href="/"> contact</Nav.Link>
+                                <Nav.Link href="/" className="header-link"> Home</Nav.Link>
+                                <Nav.Link href="/"  className="header-link"> About Us</Nav.Link>
+                                <Nav.Link href="/"  className="header-link"> Testomonial</Nav.Link>
+                                <Nav.Link href="/"  className="header-link"> product</Nav.Link>
+                                <Nav.Link href="/"  className="header-link"> contact</Nav.Link>
                             </Nav>
                             {/* right side me kuch show karane ke liye */}
                             <Navbar.Text>this is singUp button</Navbar.Text>
                             </Navbar.Collapse>
                         </Container>
-
                     </Navbar>
                 </Col>
             </Row>

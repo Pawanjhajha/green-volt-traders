@@ -38,7 +38,6 @@ export const login = async (req, res, next) => {
       sub:user._id,
       name:user.name,
     }
-    console.log(process.env.ACCESS_TOKEN_EXPIRY,"acees")
     // const token=jwt.sign(password,process.env.SECRET_KEY,{expiresIn:process.env.ACCESS_TOKEN_EXPIRY});
 
     const token = jwt.sign(payload, process.env.SECRET_KEY, {
@@ -52,6 +51,7 @@ export const login = async (req, res, next) => {
         token:token,
         expiresIn:Number(process.env.ACCESS_TOKEN_EXPIRY),
         tokenType: 'bearer',
+        isOwner:user.isOwner?true:false,
       },
       message: "LoggedIn",
       errors: {}

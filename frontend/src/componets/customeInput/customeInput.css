@@ -3,3 +3,9 @@
     text-align: left;  /* Aligns the text to the right */
 }
 
+  
+  .input-error {
+    border: 1px solid red !important;  /* Highlight input when there's an error */
+    background-color: rgba(255, 0, 0, 0.05); /* Light red background */
+  }
+

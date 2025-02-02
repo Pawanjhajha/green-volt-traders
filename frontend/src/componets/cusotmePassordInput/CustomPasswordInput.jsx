@@ -2,7 +2,8 @@ import { useState } from "react";
 import { Form ,InputGroup} from "react-bootstrap";
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 import './customePasswordInput.css';
-function CustomPasswordInput({label='password',type='password' ,placeholder="Enter your password",value,onChange,name,icon,className,inputClassName,groupClassName}){
+import ErrorMessage from "../customeError/ErrorMessage";
+function CustomPasswordInput({label='password',type='password' ,placeholder="Enter your password",value,onChange,name,icon,className,inputClassName,groupClassName,error}){
     const [showPassword, setShowPassword] = useState(false);
 
     const handleTogglePassword = () => {
@@ -28,6 +29,7 @@ function CustomPasswordInput({label='password',type='password' ,placeholder="Ent
                 )} */}
                 <span onClick ={handleTogglePassword} className="password-toggle-icon">{showPassword ? <AiOutlineEye /> : <AiOutlineEyeInvisible />}</span>
                 </InputGroup>
+                <ErrorMessage message={error} /> {/* Show error below the input */}
         </Form.Group>
         </>
     )
