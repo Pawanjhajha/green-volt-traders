@@ -1,7 +1,8 @@
 import express from 'express';
 import dotEnv from 'dotenv';
 import connectDB from './config/db.js';
-import authRouter from './routers/authRouter.js'
+import authRouter from './routers/authRouter.js';
+import productRouter from './routers/productRouter.js';
 import { globalErrorHandler } from './controllers/globalErrorController.js';
 import cors from 'cors'; 
 dotEnv.config({path:'./.env.local'})
@@ -20,6 +21,7 @@ app.get('/',(req,res)=>{
 const prefix=process.env.API_PREFIX;
 // console.log(prefix)
 app.use(`${prefix}/auth`,authRouter)
+app.use(`${prefix}/product`,productRouter)
 
 //add the global error handler
 app.use(globalErrorHandler)
