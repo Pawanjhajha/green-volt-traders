@@ -16,11 +16,3 @@
   --global-font-family:gilroy, sans-serif;
   --global-font-size:14px;
 }
-
-body {
-  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); /* Applying global gradient */
-  font-family: gilroy, sans-serif;
-  font-size: 14px;
-  margin: 0;
-  padding: 0;
-}

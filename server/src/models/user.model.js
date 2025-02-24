@@ -36,7 +36,7 @@ const userSchema= new mongoose.Schema({
         type:Boolean,
         default:true,
     }
-},{toJSON:{virtuals:true},toObject:{virtuals:true}})
+},{toJSON:{virtuals:true},toObject:{virtuals:true}, timestamps: true,versionKey: false })
 
 userSchema.pre("save", async function(next) {
     if (!this.isModified('password')) {
@@ -75,6 +75,6 @@ userSchema.virtual('name').get(function(){
 userSchema.methods.comparePasswordInDB=async function(password,passwordDb){
     return await bcrypt.compare(password,passwordDb)//the compare method runt the boolean value
 }
-export const UserModel = mongoose.model('users', userSchema);
+export const UserModel = mongoose.model('core_users', userSchema);
 
 

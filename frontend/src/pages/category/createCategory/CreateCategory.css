@@ -1,0 +1,10 @@
+.category-container {
+    min-height: 100vh;
+    color: var(--text-color); /* Global text color */
+   margin-top: 2rem;
+}
+
+.create-category{
+    background-color: var(--text-color) !important;
+    color: black !important;
+}

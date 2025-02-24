@@ -25,7 +25,7 @@ function Header() {
                                 <Nav.Link href="/" className="header-link"> Home</Nav.Link>
                                 <Nav.Link href="/"  className="header-link"> About Us</Nav.Link>
                                 <Nav.Link href="/"  className="header-link"> Testomonial</Nav.Link>
-                                <Nav.Link href="/"  className="header-link"> product</Nav.Link>
+                                <Nav.Link href="/product"  className="header-link"> product</Nav.Link>
                                 <Nav.Link href="/"  className="header-link"> contact</Nav.Link>
                             </Nav>
                             {/* right side me kuch show karane ke liye */}

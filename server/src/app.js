@@ -1,7 +1,6 @@
 import express from 'express';
 import dotEnv from 'dotenv';
 import connectDB from './config/db.js';
-import userRouter from './routers/userRouter.js';
 import authRouter from './routers/authRouter.js'
 import { globalErrorHandler } from './controllers/globalErrorController.js';
 import cors from 'cors'; 
@@ -10,7 +9,7 @@ const app=express();
 // Connect to MongoDB
 connectDB();
 // ✅ Enable CORS Middleware
-app.use(cors());
+app.use(cors('*'));
 // Middleware to parse JSON bodies
 app.use(express.json());//it will parse the json bodies and enbale json to express
 
@@ -20,7 +19,6 @@ app.get('/',(req,res)=>{
 })
 const prefix=process.env.API_PREFIX;
 // console.log(prefix)
-app.use(`${prefix}/users`,userRouter)
 app.use(`${prefix}/auth`,authRouter)
 
 //add the global error handler

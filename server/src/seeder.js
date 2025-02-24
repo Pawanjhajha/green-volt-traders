@@ -7,8 +7,7 @@ import { OwnerSeeder } from "./seeder/owner.seeder.js";
 async function runSeeder() {
   try {
     // Connect to the database
-dotenv.config();
-
+dotenv.config({path:'./.env.local'});
     await connectDB();
 
     // Run the owner seeder
