@@ -1,11 +1,13 @@
 import { Button, Card, Col, Container, Form, Row, Spinner } from 'react-bootstrap';
 import './Login.css';  // Make sure your CSS styles are updated accordingly
 import { useState } from 'react';
-import CustomPasswordInput from '../../componets/cusotmePassordInput/CustomPasswordInput';
-import CustomInput from '../../componets/customeInput/CustomInput';
 import { LogInUser } from '../../utils/service/AxiosApi';
 import { Navigate } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
+import CustomInput from '../../componets/common/customeInput/CustomInput';
+import CustomPasswordInput from '../../componets/common/cusotmePassordInput/CustomPasswordInput';
+import SubmitButton from '../../componets/common/Button/SubmitButton';
+
 // import 'react-toastify/dist/ReactToastify.css';
 function Login() {
     const [email, setEmail] = useState('');
@@ -17,7 +19,8 @@ function Login() {
         setErrors({ email: "", password: "" });
         try {
             const response = await LogInUser(loginData);
-            console.log(response.data?.data?.isOwner, "ow")
+
+            console.log(response.data, "ow")
             if (response.data?.data?.isOwner) {
                 console.log("owner login");
             } else {
@@ -26,7 +29,7 @@ function Login() {
         } catch (e) {
             const errorMessage = e.response?.data?.message || "Login failed! Please try again.";
             if (e.response && e.response.data) {
-                const { statusCode, message, errors } = e.response.data;
+                const {  errors } = e.response.data;
                 // Set field-specific errors
                 setErrors({
                     email: errors?.email ? errors.email[0] : "",
@@ -80,7 +83,7 @@ function Login() {
                                     name="password"
                                     error={errors.password} // Pass field-specific error
                                 />
-                                <Button type="submit" size="sm" className="w-100" disabled={loading}>
+                                {/* <Button type="submit" size="sm" className="w-100" disabled={loading}>
                                     {loading ? (
                                         <>
                                             <Spinner animation="border" size="sm" className="me-2" />
@@ -89,7 +92,8 @@ function Login() {
                                     ) : (
                                         "Login"
                                     )}
-                                </Button>
+                                </Button> */}
+                               <SubmitButton type='submit'  size="sm" className="w-100" loading={loading}>Login</SubmitButton>
                             </Form>
                         </Card>
                     </Col>
