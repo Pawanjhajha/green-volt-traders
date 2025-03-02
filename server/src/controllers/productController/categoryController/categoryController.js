@@ -20,6 +20,7 @@ export const createCategory=async (req,res,next)=>{
         }
         const create=await CategoryModel.create({name:name});
             res.status(201).json({
+                statusCode:201,
                 data:create,
                 message:'Successfully Created',
                 errors:{}

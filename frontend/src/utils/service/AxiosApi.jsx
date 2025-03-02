@@ -2,7 +2,6 @@
 import axios from 'axios';
 
 const baseURL = process.env.REACT_APP_API_ENDPOINT;
-console.log(baseURL,"basUrl")
 const AxiosApi=axios.create({
     baseURL:baseURL
 })//create method me hame ek object pass krna hota hai.usame ek propetry define krni hoti hai =baseURL.baseURL ki hame ek value deni hoti h that is your actual api jaha se data ko get krna hai
@@ -18,4 +17,7 @@ export const getUser=()=>{
     //ex.get() esame wo path define krna hoga
 export const LogInUser=(data)=>{
     return AxiosApi.post('/auth',data);
+}
+export const createCategory=(data)=>{
+    return AxiosApi.post('/product/category',data)
 }
